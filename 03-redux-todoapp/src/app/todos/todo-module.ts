@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { TodoAdd } from './todo-add/todo-add';
 import { TodoFooter } from './todo-footer/todo-footer';
 import { TodoItem } from './todo-item/todo-item';
 import { TodoList } from './todo-list/todo-list';
 import { TodoPage } from './todo-page/todo-page';
+import { FilterPipe } from './filter.pipe';
 
 
 
@@ -14,10 +17,12 @@ import { TodoPage } from './todo-page/todo-page';
     TodoFooter,
     TodoItem,
     TodoList,
-    TodoPage
+    TodoPage,
+    FilterPipe
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports: [
     TodoPage
