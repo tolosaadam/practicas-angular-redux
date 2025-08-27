@@ -1,4 +1,4 @@
-import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { isDevMode, NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing-module';
 
@@ -7,7 +7,8 @@ import { Hijo } from './contador/hijo/hijo';
 import { Nieto } from './contador/nieto/nieto';
 
 // NgRx
-import { StoreModule } from '@ngrx/store';
+import { provideStore, StoreModule } from '@ngrx/store';
+import { provideStoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { contadorReducer } from './contador/contador.reducer';
 
 @NgModule({
@@ -19,7 +20,12 @@ import { contadorReducer } from './contador/contador.reducer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ contador: contadorReducer })
+    StoreModule.forRoot({ contador: contadorReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: !isDevMode(),
+      autoPause: true,
+    })
   ],
   providers: [
     provideBrowserGlobalErrorListeners()
