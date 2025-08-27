@@ -18,6 +18,9 @@ import { TodoPage } from './todo-page/todo-page';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    TodoPage
   ]
 })
 export class TodoModule { }
